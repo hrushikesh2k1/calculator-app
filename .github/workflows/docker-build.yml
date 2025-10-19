@@ -13,6 +13,14 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
 
+      - name: Check secrets present
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          if [ -z "$DOCKER_USERNAME" ]; then echo "DOCKER_USERNAME is EMPTY"; else echo "DOCKER_USERNAME is SET"; fi
+          if [ -z "$DOCKER_PASSWORD" ]; then echo "DOCKER_PASSWORD is EMPTY"; else echo "DOCKER_PASSWORD is SET"; fi
+
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
