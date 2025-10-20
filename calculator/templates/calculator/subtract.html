@@ -1,0 +1,11 @@
+<h2>substraction</h2>
+<form method="post">
+	{% csrf_token %}
+	<input type="number" name="num1" placeholder="enter first number">
+	<input type="number" name="num2" placeholder="enter second number">
+	<button type="submit">subtract</button>
+</form>
+
+{% if result is not None %}
+	<h3>Result: {{ result }}</h3>
+{% endif %}
