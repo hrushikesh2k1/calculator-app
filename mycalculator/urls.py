@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from calculator import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('calculator.urls')),
+    path('subtract/',views.subtract,name='subtract'),
 ]
 
 
